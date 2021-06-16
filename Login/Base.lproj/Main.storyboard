@@ -100,6 +100,9 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="f"/>
+                                                        <connections>
+                                                            <action selector="singInFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OjO-df-J3W"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <userDefinedRuntimeAttributes>
@@ -134,6 +137,7 @@
                     <connections>
                         <outlet property="btnIS" destination="Fzh-qQ-9wZ" id="LFW-3v-I1n"/>
                         <outlet property="btnR" destination="d9T-3U-8JH" id="g7c-Vg-0jV"/>
+                        <outlet property="facebookButton" destination="KYb-0d-tSN" id="AyU-e0-w9x"/>
                         <outlet property="mensajeBienvendiaLebel" destination="yoy-9o-3rc" id="ExH-xl-TaY"/>
                         <segue destination="4YR-pc-aJw" kind="show" identifier="logeado" id="cls-Vb-mzv"/>
                     </connections>
@@ -576,7 +580,7 @@
         <designable name="yoy-9o-3rc"/>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="69A-HY-Adp"/>
+        <segue reference="cls-Vb-mzv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>

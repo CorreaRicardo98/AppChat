@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FBSDKLoginKit
 
 class InicioViewController: UIViewController {
     
@@ -101,6 +102,7 @@ class InicioViewController: UIViewController {
     do {
       try firebaseAuth.signOut()
         GIDSignIn.sharedInstance()?.signOut()
+        LoginManager().logOut()
         print("Cerro sesion correctamente!")
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "email")

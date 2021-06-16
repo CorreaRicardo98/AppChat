@@ -9,6 +9,7 @@ import UIKit
 import CLTypingLabel
 import Firebase
 import GoogleSignIn
+import FBSDKLoginKit
 
 
 
@@ -17,6 +18,7 @@ class ViewController: UIViewController,GIDSignInDelegate {
 
     
 
+    @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var btnIS: UIButton!
     @IBOutlet weak var btnR: UIButton!
     @IBOutlet weak var mensajeBienvendiaLebel: CLTypingLabel!
@@ -69,6 +71,32 @@ class ViewController: UIViewController,GIDSignInDelegate {
     @IBAction func inicioGoogle(_ sender: Any) {
         
         GIDSignIn.sharedInstance()?.signIn()
+    }
+    
+    
+    @IBAction func singInFacebook(_ sender: Any) {
+        
+        let loginManager = LoginManager()
+        loginManager.logOut()
+        
+        loginManager.logIn(permissions: [.email], viewController: self) { (result) in
+            switch(result){
+                
+            case .success(granted: let granted, declined: let declined, token: let token):
+                let credencial = FacebookAuthProvider.credential(withAccessToken: token?.tokenString ?? "ahfba")
+                Auth.auth().signIn(with: credencial) { (result, error) in
+                    if error == nil{
+                        self.useSegue()	
+                    }
+                    
+                }
+                
+            case .cancelled:
+                break
+            case .failed(_):
+                break
+            }
+        }
     }
     
 
